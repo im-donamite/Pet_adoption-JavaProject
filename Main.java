@@ -1,10 +1,17 @@
 package petadoption;
 
+import javax.swing.SwingUtilities;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        new LoginForm();
+        SwingUtilities.invokeLater(() -> {
+
+            new LoginForm();
+
+        });
 
     }
+
 }

@@ -112,7 +112,9 @@ public class Dashboard extends JFrame {
 
 
         headerPanel.add(iconLabel);
+
         headerPanel.add(titleLabel);
+
         headerPanel.add(subtitleLabel);
 
 
@@ -166,8 +168,11 @@ public class Dashboard extends JFrame {
 
 
         buttonPanel.add(shelterButton);
+
         buttonPanel.add(petButton);
+
         buttonPanel.add(adopterButton);
+
         buttonPanel.add(adoptionButton);
 
 
@@ -217,6 +222,9 @@ public class Dashboard extends JFrame {
         // BUTTON ACTIONS
         // =========================
 
+
+        // MANAGE SHELTERS
+
         shelterButton.addActionListener(e -> {
 
             ShelterForm shelterForm =
@@ -226,6 +234,8 @@ public class Dashboard extends JFrame {
 
         });
 
+
+        // MANAGE PETS
 
         petButton.addActionListener(e -> {
 
@@ -237,21 +247,31 @@ public class Dashboard extends JFrame {
         });
 
 
-        // DON'T CONNECT THESE YET
+        // MANAGE ADOPTERS
 
         adopterButton.addActionListener(e -> {
 
-            // AdopterForm will be created later
+            AdopterForm adopterForm =
+                    new AdopterForm();
+
+            adopterForm.setVisible(true);
 
         });
 
+
+        // MANAGE ADOPTIONS
 
         adoptionButton.addActionListener(e -> {
 
-            // AdoptionForm will be created later
+            AdoptionForm adoptionForm =
+                    new AdoptionForm();
+
+            adoptionForm.setVisible(true);
 
         });
 
+
+        // SHOW DASHBOARD
 
         setVisible(true);
 

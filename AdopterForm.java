@@ -61,12 +61,7 @@ public class AdopterForm extends JFrame {
                 JFrame.DISPOSE_ON_CLOSE
         );
 
-        setBounds(100, 100, 750, 550);
-
-
-        // =========================
-        // CONTENT PANE
-        // =========================
+        setBounds(100, 100, 800, 550);
 
         contentPane = new JPanel();
 
@@ -97,7 +92,7 @@ public class AdopterForm extends JFrame {
                 new JTextField();
 
         txtAdopterId.setBounds(
-                140, 30, 170, 25
+                140, 30, 200, 25
         );
 
         contentPane.add(txtAdopterId);
@@ -121,7 +116,7 @@ public class AdopterForm extends JFrame {
                 new JTextField();
 
         txtAdopterName.setBounds(
-                140, 70, 170, 25
+                140, 70, 200, 25
         );
 
         contentPane.add(txtAdopterName);
@@ -145,7 +140,7 @@ public class AdopterForm extends JFrame {
                 new JTextField();
 
         txtEmail.setBounds(
-                140, 110, 170, 25
+                140, 110, 200, 25
         );
 
         contentPane.add(txtEmail);
@@ -169,7 +164,7 @@ public class AdopterForm extends JFrame {
                 new JTextField();
 
         txtPhone.setBounds(
-                140, 150, 170, 25
+                140, 150, 200, 25
         );
 
         contentPane.add(txtPhone);
@@ -183,7 +178,7 @@ public class AdopterForm extends JFrame {
                 new JLabel("Address");
 
         lblAddress.setBounds(
-                360, 30, 100, 25
+                400, 30, 100, 25
         );
 
         contentPane.add(lblAddress);
@@ -193,21 +188,21 @@ public class AdopterForm extends JFrame {
                 new JTextField();
 
         txtAddress.setBounds(
-                460, 30, 200, 60
+                490, 30, 200, 60
         );
 
         contentPane.add(txtAddress);
 
 
         // =========================
-        // ADD BUTTON
+        // ADD
         // =========================
 
         JButton btnAdd =
                 new JButton("ADD");
 
         btnAdd.setBounds(
-                360, 110, 100, 30
+                400, 110, 100, 35
         );
 
         contentPane.add(btnAdd);
@@ -218,14 +213,14 @@ public class AdopterForm extends JFrame {
 
 
         // =========================
-        // UPDATE BUTTON
+        // UPDATE
         // =========================
 
         JButton btnUpdate =
                 new JButton("UPDATE");
 
         btnUpdate.setBounds(
-                470, 110, 100, 30
+                510, 110, 100, 35
         );
 
         contentPane.add(btnUpdate);
@@ -236,14 +231,14 @@ public class AdopterForm extends JFrame {
 
 
         // =========================
-        // DELETE BUTTON
+        // DELETE
         // =========================
 
         JButton btnDelete =
                 new JButton("DELETE");
 
         btnDelete.setBounds(
-                580, 110, 100, 30
+                620, 110, 100, 35
         );
 
         contentPane.add(btnDelete);
@@ -254,14 +249,14 @@ public class AdopterForm extends JFrame {
 
 
         // =========================
-        // SHOW BUTTON
+        // SHOW
         // =========================
 
         JButton btnShow =
                 new JButton("SHOW");
 
         btnShow.setBounds(
-                360, 150, 100, 30
+                400, 155, 100, 35
         );
 
         contentPane.add(btnShow);
@@ -272,14 +267,14 @@ public class AdopterForm extends JFrame {
 
 
         // =========================
-        // CLEAR BUTTON
+        // CLEAR
         // =========================
 
         JButton btnClear =
                 new JButton("CLEAR");
 
         btnClear.setBounds(
-                470, 150, 100, 30
+                510, 155, 100, 35
         );
 
         contentPane.add(btnClear);
@@ -297,7 +292,7 @@ public class AdopterForm extends JFrame {
                 new JScrollPane();
 
         scrollPane.setBounds(
-                30, 210, 650, 250
+                30, 220, 690, 250
         );
 
         contentPane.add(scrollPane);
@@ -314,7 +309,7 @@ public class AdopterForm extends JFrame {
 
 
         // =========================
-        // TABLE ROW CLICK
+        // CLICK TABLE ROW
         // =========================
 
         table.getSelectionModel().addListSelectionListener(
@@ -326,36 +321,26 @@ public class AdopterForm extends JFrame {
                         int row =
                                 table.getSelectedRow();
 
-                        try {
+                        txtAdopterId.setText(
+                                table.getValueAt(row, 0).toString()
+                        );
 
-                            txtAdopterId.setText(
-                                    table.getValueAt(row, 0).toString()
-                            );
+                        txtAdopterName.setText(
+                                table.getValueAt(row, 1).toString()
+                        );
 
-                            txtAdopterName.setText(
-                                    table.getValueAt(row, 1).toString()
-                            );
+                        txtEmail.setText(
+                                table.getValueAt(row, 2).toString()
+                        );
 
-                            txtEmail.setText(
-                                    table.getValueAt(row, 2).toString()
-                            );
+                        txtPhone.setText(
+                                table.getValueAt(row, 3).toString()
+                        );
 
-                            txtPhone.setText(
-                                    table.getValueAt(row, 3).toString()
-                            );
-
-                            txtAddress.setText(
-                                    table.getValueAt(row, 4).toString()
-                            );
-
-                        } catch (Exception ex) {
-
-                            ex.printStackTrace();
-
-                        }
-
+                        txtAddress.setText(
+                                table.getValueAt(row, 4).toString()
+                        );
                     }
-
                 }
         );
 
@@ -363,7 +348,7 @@ public class AdopterForm extends JFrame {
 
 
     // =====================================================
-    // ADD ADOPTER
+    // ADD
     // =====================================================
 
     private void addAdopter() {
@@ -414,7 +399,6 @@ public class AdopterForm extends JFrame {
 
 
             pst.close();
-
             con.close();
 
 
@@ -438,7 +422,7 @@ public class AdopterForm extends JFrame {
 
 
     // =====================================================
-    // SHOW ADOPTERS
+    // SHOW
     // =====================================================
 
     private void showAdopters() {
@@ -458,8 +442,6 @@ public class AdopterForm extends JFrame {
             ResultSet rs =
                     pst.executeQuery();
 
-
-            // rs2xml converts ResultSet into JTable model
 
             table.setModel(
                     DbUtils.resultSetToTableModel(rs)
@@ -488,7 +470,7 @@ public class AdopterForm extends JFrame {
 
 
     // =====================================================
-    // UPDATE ADOPTER
+    // UPDATE
     // =====================================================
 
     private void updateAdopter() {
@@ -593,7 +575,7 @@ public class AdopterForm extends JFrame {
 
 
     // =====================================================
-    // DELETE ADOPTER
+    // DELETE
     // =====================================================
 
     private void deleteAdopter() {
